@@ -56,6 +56,11 @@ class actions {
         else {
             let b6 = "row" + fid;
             var xx6 = document.getElementById(b6).getElementsByTagName("input");
+            var q60;
+            for (q60 = 0; q60 < xx6.length; q60++) {
+                var index = xx6[q60];
+                index.value = index.placeholder;
+            }
             var q6;
             for (q6 = 0; q6 < xx6.length; q6++) {
                 var index = xx6[q6];
