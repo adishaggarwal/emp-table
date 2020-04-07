@@ -25,7 +25,9 @@ class actions {
             var q6;
             for (q6 = 0; q6 < xx6.length; q6++) {
                 var index = xx6[q6];
-                index.placeholder = index.value;
+                if (index.value) {
+                    index.placeholder = index.value;
+                }
             }
             var tt;
             for (tt = 0; tt < p1.numrows; tt++) {
