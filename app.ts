@@ -123,14 +123,21 @@ constructor()
                             var xx6= document.getElementById(b6)!.getElementsByTagName("input")!;
             
                             var q6;
-                            for(q6=0;q6<xx6.length;q6++)
+                            for (q6 = 0; q6 < xx6.length; q6++) 
                             {
-                                var index=xx6[q6];  
-                                if(index.value)
-                                 {
-                                    index.placeholder=index.value;
-                                 }
-   
+                                var index = xx6[q6];
+                                if(q6==7)
+                                {
+                                    if(index.value)
+                                    {
+                                        index.placeholder = index.value;
+                                    }
+                                }
+                                else
+                                {
+                                    index.placeholder = index.value;
+                                }
+                                    
                             }
                             if(lol==99)
                                     {

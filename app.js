@@ -86,7 +86,12 @@ class actions {
                 var q6;
                 for (q6 = 0; q6 < xx6.length; q6++) {
                     var index = xx6[q6];
-                    if (index.value) {
+                    if (q6 == 7) {
+                        if (index.value) {
+                            index.placeholder = index.value;
+                        }
+                    }
+                    else {
                         index.placeholder = index.value;
                     }
                 }
