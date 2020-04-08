@@ -51,6 +51,15 @@ constructor()
             let pnew = document.getElementById("newsave")!;
             pnew.addEventListener("click", p1.editrow);
 
+            for(let i=0;i<p1.numrows;i++)
+            {  
+                let d = document.getElementById(""+i)!;
+            d.addEventListener("click", p1.deleterow);
+            
+            let p = document.getElementById(""+i+ "" +i)!;
+            p.addEventListener("click", p1.editrow);
+             }
+
 
     }
 
@@ -58,7 +67,7 @@ constructor()
 
     editrow()
     { 
-        
+        console.log("edit");
         var fid;
         var yo;
         var kid=1;
@@ -68,7 +77,6 @@ constructor()
             let theval = theid.value;
             if(theval)
             {
-                console.log("ki aa");
                 let therow = document.getElementById("newnew")!;
                 therow.id = "row" + theval;
                
@@ -267,6 +275,7 @@ constructor()
 
     deleterow()
     {
+        console.log("delete");
         var num;
         var kya=1;
 

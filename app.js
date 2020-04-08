@@ -32,8 +32,15 @@ class actions {
         dnew.addEventListener("click", p1.deleterow);
         let pnew = document.getElementById("newsave");
         pnew.addEventListener("click", p1.editrow);
+        for (let i = 0; i < p1.numrows; i++) {
+            let d = document.getElementById("" + i);
+            d.addEventListener("click", p1.deleterow);
+            let p = document.getElementById("" + i + "" + i);
+            p.addEventListener("click", p1.editrow);
+        }
     }
     editrow() {
+        console.log("edit");
         var fid;
         var yo;
         var kid = 1;
@@ -42,7 +49,6 @@ class actions {
             let theid = document.getElementById("theid");
             let theval = theid.value;
             if (theval) {
-                console.log("ki aa");
                 let therow = document.getElementById("newnew");
                 therow.id = "row" + theval;
                 let thesave = document.getElementById("newsave");
@@ -175,6 +181,7 @@ class actions {
         }
     }
     deleterow() {
+        console.log("delete");
         var num;
         var kya = 1;
         if (this.id == "newcancel") {
