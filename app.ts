@@ -26,10 +26,14 @@ constructor()
    
 }
 
-    addrow()
+    async addrow()
     {
         alert("Remember to fill a unique ID, else it will not work properly.");
+         let kalesh=await document.getElementById("t1body")!.getElementsByTagName("button")!;
         let thebody= document.getElementById("t1body")!;
+
+        let newlen=kalesh.length;
+        console.log(newlen);
         
        
             thebody.innerHTML +=` <tr style="display:block" id="newnew">
@@ -51,15 +55,22 @@ constructor()
             let pnew = document.getElementById("newsave")!;
             pnew.addEventListener("click", p1.editrow);
 
-            for(let i=0;i<p1.numrows;i++)
-            {  
-                let d = document.getElementById(""+i)!;
-            d.addEventListener("click", p1.deleterow);
-            
-            let p = document.getElementById(""+i+ "" +i)!;
-            p.addEventListener("click", p1.editrow);
-             }
+            console.log(kalesh);
 
+            for(let i=1;i<newlen;i=i+2)
+            { 
+                console.log(kalesh[i].id);
+                let a=""+kalesh[i].id;
+                let b=""+kalesh[i].id+""+kalesh[i].id;
+
+                    let d = document.getElementById("" + a)!;
+                    d.addEventListener("click", p1.deleterow);
+                   
+                    let p = document.getElementById("" + b)!;
+                    p.addEventListener("click", p1.editrow);
+               
+             }
+            
 
     }
 
@@ -67,7 +78,6 @@ constructor()
 
     editrow()
     { 
-        console.log("edit");
         var fid;
         var yo;
         var kid=1;
@@ -94,16 +104,16 @@ constructor()
             else
             {
                 let rowid = document.getElementById("newnew")!;
-                rowid.style.display = "none";
-                rowid.removeAttribute("id");
                 let theid = document.getElementById("theid")!;
                 let thesave = document.getElementById("newsave")!;
                 let thecancel = document.getElementById("newcancel")!;
                 theid.removeAttribute("id");
                 thesave.removeAttribute("id");
                 thecancel.removeAttribute("id");
+                rowid.id="fake";
+                document.getElementById("fake")!.remove();
                 fid = "nosorry";
-                kid=99;
+                kid = 99;
             }
            
         }
@@ -122,7 +132,6 @@ constructor()
 
                     if(kid==1)
                     {  
-                        //console.log(fid);
                         if(document.getElementById(""+fid+""+fid)!.innerHTML=="SAVE" )
                         {
                             
@@ -163,38 +172,38 @@ constructor()
                                         p1.numrows=p1.numrows +1; 
                                     }
                             
-                            
-                            var tt;
-                            for(tt=0;tt<p1.numrows;tt++)
-                            {  
-                                let num2=p1.emp[tt].id;
-                                let b25=""+num2;
-                                let b35=""+num2+ "" +num2;
-                                var xx15= document.getElementById(""+b25)!;
-                                var xx25= document.getElementById(""+b35)!;
-                               
-            
-                                if(b35==yo)
-                                {
-                                        xx25.innerHTML="EDIT";
-                                        xx15.innerHTML="DELETE";
-                                        let b="row"+ fid;
-            
-                                        var xx5= document.getElementById(b)!.getElementsByTagName("input")!;
-            
-                                        var q5;
-                                        for(q5=0;q5<xx5.length;q5++)
-                                        {
-                                            var index=xx5[q5];
-                                            index.disabled=true;   
-                                        }
-                                }
-                                else
-                                {
-                                    xx15.style.display="block";
-                                    xx25.style.display="block";
-                                }
-                            }
+                                    let kalesh1=document.getElementById("t1body")!.getElementsByTagName("button")!;
+
+                                    for(let i=1;i<kalesh1.length;i=i+2)
+                                    { 
+                                            let num2=kalesh1[i].id;
+                                            let b25=""+num2;
+                                            let b35=""+num2+ "" +num2;
+                                            var xx15= document.getElementById(""+b25)!;
+                                            var xx25= document.getElementById(""+b35)!;
+                                           
+                        
+                                            if(b35==yo)
+                                            {
+                                                    xx25.innerHTML="EDIT";
+                                                    xx15.innerHTML="DELETE";
+                                                    let b="row"+ fid;
+                        
+                                                    var xx5= document.getElementById(b)!.getElementsByTagName("input")!;
+                        
+                                                    var q5;
+                                                    for(q5=0;q5<xx5.length;q5++)
+                                                    {
+                                                        var index=xx5[q5];
+                                                        index.disabled=true;   
+                                                    }
+                                            }
+                                            else
+                                            {
+                                                xx15.style.display="block";
+                                                xx25.style.display="block";
+                                            } 
+                                     }
                         }
                         
 
@@ -218,19 +227,17 @@ constructor()
                                             var index=xx6[q6];   
                                             p1.temp[q6]=index.placeholder;
                                         }
-                                    
 
-                                        var pp;
-                                        for(pp=0;pp<p1.numrows;pp++)
-                                        {  
-                                            
-                                            
-                                            let num2=p1.emp[pp].id;
-                                            
-                                            if(p1.emp[pp].id==fid)
+                                        let kalesh2=document.getElementById("t1body")!.getElementsByTagName("button")!;
+
+                                    for(let i=1;i<kalesh2.length;i=i+2)
+                                    { 
+                                            let num2=kalesh2[i].id;
+                    
+                                            if(num2==fid)
                                             {
                                                 
-                                                let b2=this.id;
+                                                let b2=""+fid+""+fid;
                                                 
                                                 let b3="row"+ fid;
                                 
@@ -261,7 +268,10 @@ constructor()
                                                 xx11.style.display="none";
                                                 xx22.style.display="none";
                                             }
-                                    }
+                                     }
+                                    
+
+                                       
 
                             
                                 }
@@ -340,10 +350,12 @@ constructor()
                             let fid= Math.floor(nid);
                             let yo=""+num;
                             
-                var tt
-                for(tt=0;tt<p1.numrows;tt++)
-                {  
-                    let num2=p1.emp[tt].id;
+                
+                let kalesh3=document.getElementById("t1body")!.getElementsByTagName("button")!;
+
+                for(let i=1;i<kalesh3.length;i=i+2)
+                {
+                    let num2=kalesh3[i].id;
                     let b25=""+num2;
                     let b35=""+num2+ "" +num2;
                     var xx15= document.getElementById(""+b25)!;
@@ -355,28 +367,20 @@ constructor()
             else
             {
                 var tt;
-
                           let deleteitem= "row"+ num;
                           let b1=""+num;
                           let b2=""+ num + "" + num;
                        var xx= document.getElementById(deleteitem)!;
                        var xx1= document.getElementById(b1)!;
                        var xx2= document.getElementById(b2)!;
-                    xx.style.display="none";
-                    xx1.style.display="none";
-                    xx2.style.display="none";
-                        
-                      
-                
+                       xx.remove();
+                       p1.numrows=p1.numrows-1;
+                    //xx.style.display="none";
+                    //xx1.style.display="none";
+                    //xx2.style.display="none";
             }
         }
-        
-    
-               
-                
-     
     }
-
 
     getdata():number
     {

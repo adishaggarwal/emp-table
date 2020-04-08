@@ -1,4 +1,13 @@
 "use strict";
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
 class actions {
     constructor() {
         let add = document.getElementById("add");
@@ -14,9 +23,13 @@ class actions {
         }
     }
     addrow() {
-        alert("Remember to fill a unique ID, else it will not work properly.");
-        let thebody = document.getElementById("t1body");
-        thebody.innerHTML += ` <tr style="display:block" id="newnew">
+        return __awaiter(this, void 0, void 0, function* () {
+            alert("Remember to fill a unique ID, else it will not work properly.");
+            let kalesh = yield document.getElementById("t1body").getElementsByTagName("button");
+            let thebody = document.getElementById("t1body");
+            let newlen = kalesh.length;
+            console.log(newlen);
+            thebody.innerHTML += ` <tr style="display:block" id="newnew">
             <td><input type="text" placeholder=""></td>
             <td><input type="text" placeholder=""></td>
             <td><input type="text" placeholder=""></td>
@@ -28,19 +41,23 @@ class actions {
             <td><button id="newsave" class="btn btn-primary">SAVE</button></td>
             <td><button id="newcancel" class="btn btn-danger">CANCEL</button></td>
             </tr>`;
-        let dnew = document.getElementById("newcancel");
-        dnew.addEventListener("click", p1.deleterow);
-        let pnew = document.getElementById("newsave");
-        pnew.addEventListener("click", p1.editrow);
-        for (let i = 0; i < p1.numrows; i++) {
-            let d = document.getElementById("" + i);
-            d.addEventListener("click", p1.deleterow);
-            let p = document.getElementById("" + i + "" + i);
-            p.addEventListener("click", p1.editrow);
-        }
+            let dnew = document.getElementById("newcancel");
+            dnew.addEventListener("click", p1.deleterow);
+            let pnew = document.getElementById("newsave");
+            pnew.addEventListener("click", p1.editrow);
+            console.log(kalesh);
+            for (let i = 1; i < newlen; i = i + 2) {
+                console.log(kalesh[i].id);
+                let a = "" + kalesh[i].id;
+                let b = "" + kalesh[i].id + "" + kalesh[i].id;
+                let d = document.getElementById("" + a);
+                d.addEventListener("click", p1.deleterow);
+                let p = document.getElementById("" + b);
+                p.addEventListener("click", p1.editrow);
+            }
+        });
     }
     editrow() {
-        console.log("edit");
         var fid;
         var yo;
         var kid = 1;
@@ -62,14 +79,14 @@ class actions {
             }
             else {
                 let rowid = document.getElementById("newnew");
-                rowid.style.display = "none";
-                rowid.removeAttribute("id");
                 let theid = document.getElementById("theid");
                 let thesave = document.getElementById("newsave");
                 let thecancel = document.getElementById("newcancel");
                 theid.removeAttribute("id");
                 thesave.removeAttribute("id");
                 thecancel.removeAttribute("id");
+                rowid.id = "fake";
+                document.getElementById("fake").remove();
                 fid = "nosorry";
                 kid = 99;
             }
@@ -85,7 +102,6 @@ class actions {
             yo = "" + num;
         }
         if (kid == 1) {
-            //console.log(fid);
             if (document.getElementById("" + fid + "" + fid).innerHTML == "SAVE") {
                 let b6 = "row" + fid;
                 var xx6 = document.getElementById(b6).getElementsByTagName("input");
@@ -114,9 +130,9 @@ class actions {
                     });
                     p1.numrows = p1.numrows + 1;
                 }
-                var tt;
-                for (tt = 0; tt < p1.numrows; tt++) {
-                    let num2 = p1.emp[tt].id;
+                let kalesh1 = document.getElementById("t1body").getElementsByTagName("button");
+                for (let i = 1; i < kalesh1.length; i = i + 2) {
+                    let num2 = kalesh1[i].id;
                     let b25 = "" + num2;
                     let b35 = "" + num2 + "" + num2;
                     var xx15 = document.getElementById("" + b25);
@@ -151,11 +167,11 @@ class actions {
                     var index = xx6[q6];
                     p1.temp[q6] = index.placeholder;
                 }
-                var pp;
-                for (pp = 0; pp < p1.numrows; pp++) {
-                    let num2 = p1.emp[pp].id;
-                    if (p1.emp[pp].id == fid) {
-                        let b2 = this.id;
+                let kalesh2 = document.getElementById("t1body").getElementsByTagName("button");
+                for (let i = 1; i < kalesh2.length; i = i + 2) {
+                    let num2 = kalesh2[i].id;
+                    if (num2 == fid) {
+                        let b2 = "" + fid + "" + fid;
                         let b3 = "row" + fid;
                         var xx1 = document.getElementById("" + fid);
                         var xx2 = document.getElementById(b2);
@@ -233,9 +249,9 @@ class actions {
                 let nid = num / div;
                 let fid = Math.floor(nid);
                 let yo = "" + num;
-                var tt;
-                for (tt = 0; tt < p1.numrows; tt++) {
-                    let num2 = p1.emp[tt].id;
+                let kalesh3 = document.getElementById("t1body").getElementsByTagName("button");
+                for (let i = 1; i < kalesh3.length; i = i + 2) {
+                    let num2 = kalesh3[i].id;
                     let b25 = "" + num2;
                     let b35 = "" + num2 + "" + num2;
                     var xx15 = document.getElementById("" + b25);
@@ -252,9 +268,11 @@ class actions {
                 var xx = document.getElementById(deleteitem);
                 var xx1 = document.getElementById(b1);
                 var xx2 = document.getElementById(b2);
-                xx.style.display = "none";
-                xx1.style.display = "none";
-                xx2.style.display = "none";
+                xx.remove();
+                p1.numrows = p1.numrows - 1;
+                //xx.style.display="none";
+                //xx1.style.display="none";
+                //xx2.style.display="none";
             }
         }
     }
