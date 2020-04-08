@@ -275,7 +275,6 @@ constructor()
 
     deleterow()
     {
-        console.log("delete");
         var num;
         var kya=1;
 
@@ -357,10 +356,6 @@ constructor()
             {
                 var tt;
 
-                for(tt=0;tt<p1.numrows;tt++)
-                {  
-                     if(p1.emp[tt].id==num)
-                      {
                           let deleteitem= "row"+ num;
                           let b1=""+num;
                           let b2=""+ num + "" + num;
@@ -371,8 +366,8 @@ constructor()
                     xx1.style.display="none";
                     xx2.style.display="none";
                         
-                      }
-                }
+                      
+                
             }
         }
         

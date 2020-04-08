@@ -181,7 +181,6 @@ class actions {
         }
     }
     deleterow() {
-        console.log("delete");
         var num;
         var kya = 1;
         if (this.id == "newcancel") {
@@ -247,19 +246,15 @@ class actions {
             }
             else {
                 var tt;
-                for (tt = 0; tt < p1.numrows; tt++) {
-                    if (p1.emp[tt].id == num) {
-                        let deleteitem = "row" + num;
-                        let b1 = "" + num;
-                        let b2 = "" + num + "" + num;
-                        var xx = document.getElementById(deleteitem);
-                        var xx1 = document.getElementById(b1);
-                        var xx2 = document.getElementById(b2);
-                        xx.style.display = "none";
-                        xx1.style.display = "none";
-                        xx2.style.display = "none";
-                    }
-                }
+                let deleteitem = "row" + num;
+                let b1 = "" + num;
+                let b2 = "" + num + "" + num;
+                var xx = document.getElementById(deleteitem);
+                var xx1 = document.getElementById(b1);
+                var xx2 = document.getElementById(b2);
+                xx.style.display = "none";
+                xx1.style.display = "none";
+                xx2.style.display = "none";
             }
         }
     }
