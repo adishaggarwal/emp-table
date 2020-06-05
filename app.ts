@@ -451,7 +451,10 @@ constructor()
         tbody.innerHTML =``;
         for(let i=0;i<this.emp.length;i++)
         {
-            tbody.innerHTML +=` <tr style="display:block" id="row${this.emp[i].id}">
+            let newrow= tbody.insertRow(-1);
+            newrow.setAttribute("id","row"+this.emp[i].id);
+
+            tbody.innerHTML +=`
             <td><input type="text" placeholder="${this.emp[i].FirstName}" disabled></td>
             <td><input type="text" placeholder="${this.emp[i].MiddleName}" disabled></td>
             <td><input type="text" placeholder="${this.emp[i].LastName}" disabled></td>
@@ -462,7 +465,7 @@ constructor()
             <td><input type="number" placeholder="${this.emp[i].id}" disabled></td>
             <td><button id="${this.emp[i].id}${this.emp[i].id}" class="btn btn-primary">EDIT</button></td>
             <td><button id="${this.emp[i].id}" class="btn btn-danger">DELETE</button></td>
-            </tr>`;
+            `;
 
         }
 
